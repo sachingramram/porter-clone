@@ -144,7 +144,7 @@ export default function AdminDashboard() {
               <div className="flex-1">
                 <div className="flex items-center gap-2">
                   <span className="font-bold text-gray-900 text-lg">
-                    {l.company || l.name}
+                    {l.name || l.company}
                   </span>
                   <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 border border-gray-200 font-mono">
                     ID: {l.requestId || l._id.slice(-4)}
@@ -152,7 +152,7 @@ export default function AdminDashboard() {
                 </div>
                 <p className="text-sm text-gray-600 mt-1 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-indigo-400"></span>
-                  {l.name}
+                  {l.company}
                 </p>
               </div>
 

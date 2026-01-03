@@ -5,9 +5,9 @@ export default function HomePage() {
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
+        {/* Adjusted padding here from py-24 to py-12 to remove top space */}
+        <div className="max-w-7xl mx-auto px-6 py-6 md:py-10 grid md:grid-cols-2 gap-12 items-center">
           <div className="relative z-10 animate-in slide-in-from-bottom-4">
-             
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900 mb-6">
               Book Trucks & Bikes <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
@@ -37,13 +37,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right Illustration / Placeholder */}
-          <div className="relative h-80 md:h-[500px] bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl flex items-center justify-center text-indigo-300 shadow-inner">
-            {/* Using a pure CSS pattern to make it look nice without images */}
-            <div className="text-center">
-              <div className="text-9xl mb-4">🚚</div>
-              <p className="font-bold text-2xl text-indigo-400/50">
-                Fast Delivery
+          {/* Right Illustration / Image */}
+          <div className="relative h-80 md:h-[500px] bg-white rounded-3xl overflow-hidden shadow-2xl border-4 border-gray-100">
+            <img
+              src="https://www.shutterstock.com/image-photo/orange-cargo-volvo-truck-white-600nw-2531838041.jpg"
+              alt="Logistics Truck"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-in-out"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-8">
+              <p className="text-white font-bold text-lg backdrop-blur-sm bg-white/20 px-4 py-2 rounded-lg border border-white/30">
+                Premium Fleet 🚚
               </p>
             </div>
           </div>
@@ -90,7 +95,9 @@ export default function HomePage() {
             Our Clients
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-70">
-            <div className="text-2xl font-bold text-gray-400">Nandana Palace</div>
+            <div className="text-2xl font-bold text-gray-400">
+              Nandana Palace
+            </div>
             <div className="text-2xl font-bold text-gray-400">Fluenco</div>
             <div className="text-2xl font-bold text-gray-400">Cars24</div>
             <div className="text-2xl font-bold text-gray-400">New Me</div>
@@ -189,7 +196,7 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <TestimonialCard
-              name="Rahul Sharma"
+              name="Dheeraj Sharma"
               quote="Porter made my house shifting so easy. The driver was professional and the pricing was very reasonable."
             />
             <TestimonialCard
@@ -280,17 +287,28 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
             {/* Brand & App */}
             <div className="lg:col-span-1">
-              <Link href="/" className="text-2xl font-bold text-white mb-6 block">
+              <Link
+                href="/"
+                className="text-2xl font-bold text-white mb-6 block"
+              >
                 PORTER CLONE
               </Link>
               <div className="mb-8">
                 <h3 className="text-sm font-bold mb-4">Follow us on</h3>
                 <div className="flex gap-4">
                   {/* Social Media Icons Placeholder */}
-                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">FB</div>
-                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">TW</div>
-                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">IG</div>
-                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">LI</div>
+                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                    FB
+                  </div>
+                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                    TW
+                  </div>
+                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                    IG
+                  </div>
+                  <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                    LI
+                  </div>
                 </div>
               </div>
               <div>
@@ -311,9 +329,21 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-bold mb-6">Company</h3>
               <ul className="space-y-3 text-sm text-gray-400">
-                <li><Link href="/about" className="hover:text-white">About Us</Link></li>
-                <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
-                <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
+                <li>
+                  <Link href="/about" className="hover:text-white">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/careers" className="hover:text-white">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="hover:text-white">
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -321,11 +351,31 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-bold mb-6">Quick Links</h3>
               <ul className="space-y-3 text-sm text-gray-400">
-                <li><Link href="/api-integrations" className="hover:text-white">API Integrations</Link></li>
-                <li><Link href="/packers-movers" className="hover:text-white">Packers & Movers</Link></li>
-                <li><Link href="/two-wheelers" className="hover:text-white">Two Wheelers</Link></li>
-                <li><Link href="/trucks" className="hover:text-white">Trucks</Link></li>
-                <li><Link href="/enterprise" className="hover:text-white">Porter Enterprise</Link></li>
+                <li>
+                  <Link href="/api-integrations" className="hover:text-white">
+                    API Integrations
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/packers-movers" className="hover:text-white">
+                    Packers & Movers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/two-wheelers" className="hover:text-white">
+                    Two Wheelers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/trucks" className="hover:text-white">
+                    Trucks
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/enterprise" className="hover:text-white">
+                    Porter Enterprise
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -333,13 +383,41 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-bold mb-6">Support</h3>
               <ul className="space-y-3 text-sm text-gray-400">
-                <li><Link href="/contact" className="hover:text-white">Contact Us</Link></li>
-                <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
-                <li><Link href="/terms-ssi" className="hover:text-white">Terms of Service - SSI</Link></li>
-                <li><Link href="/insurance-faqs" className="hover:text-white">Insurance FAQs</Link></li>
-                <li><Link href="/driver-terms" className="hover:text-white">Driver Partner Terms & Conditions</Link></li>
-                <li><Link href="/zero-tolerance" className="hover:text-white">Zero Tolerance Policy</Link></li>
+                <li>
+                  <Link href="/contact" className="hover:text-white">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy" className="hover:text-white">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="hover:text-white">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms-ssi" className="hover:text-white">
+                    Terms of Service - SSI
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/insurance-faqs" className="hover:text-white">
+                    Insurance FAQs
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/driver-terms" className="hover:text-white">
+                    Driver Partner Terms & Conditions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/zero-tolerance" className="hover:text-white">
+                    Zero Tolerance Policy
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -347,8 +425,16 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-bold mb-6">Countries</h3>
               <ul className="space-y-3 text-sm text-gray-400">
-                <li><Link href="/uae" className="hover:text-white">United Arab Emirates</Link></li>
-                <li><Link href="/turkey" className="hover:text-white">Turkey</Link></li>
+                <li>
+                  <Link href="/uae" className="hover:text-white">
+                    United Arab Emirates
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/turkey" className="hover:text-white">
+                    Turkey
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
