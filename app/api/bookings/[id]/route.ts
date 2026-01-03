@@ -3,65 +3,73 @@ import type { NextRequest } from "next/server";
 import { connectDB } from "@/lib/db";
 import { Booking } from "@/models/Booking";
 
-/**
- * PATCH → Update booking status (Admin use)
- */
+/* ================= PATCH ================= */
+/* Update booking status */
+
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  try {
+    await connectDB();
 
-  const body = await req.json();
-  const { status } = body;
+    // ✅ Next.js 15: params must be awaited
+    const { id } = await context.params;
 
-  if (!status) {
+    const body = await req.json();
+    const { status } = body;
+
+    const booking = await Booking.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true }
+    );
+
+    if (!booking) {
+      return NextResponse.json(
+        { error: "Booking not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(booking);
+  } catch (error) {
+    console.error("PATCH /api/bookings/[id] error:", error);
     return NextResponse.json(
-      { error: "Status is required" },
-      { status: 400 }
+      { error: "Failed to update booking" },
+      { status: 500 }
     );
   }
-
-  await connectDB();
-
-  const updatedBooking = await Booking.findByIdAndUpdate(
-    id,
-    { status },
-    { new: true }
-  );
-
-  if (!updatedBooking) {
-    return NextResponse.json(
-      { error: "Booking not found" },
-      { status: 404 }
-    );
-  }
-
-  return NextResponse.json(updatedBooking);
 }
 
-/**
- * DELETE → Remove booking (optional admin action)
- */
+/* ================= DELETE ================= */
+/* Delete booking */
+
 export async function DELETE(
-  _req: NextRequest,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  try {
+    await connectDB();
 
-  await connectDB();
+    // ✅ Next.js 15: params must be awaited
+    const { id } = await context.params;
 
-  const deletedBooking = await Booking.findByIdAndDelete(id);
+    const booking = await Booking.findByIdAndDelete(id);
 
-  if (!deletedBooking) {
+    if (!booking) {
+      return NextResponse.json(
+        { error: "Booking not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("DELETE /api/bookings/[id] error:", error);
     return NextResponse.json(
-      { error: "Booking not found" },
-      { status: 404 }
+      { error: "Failed to delete booking" },
+      { status: 500 }
     );
   }
-
-  return NextResponse.json({
-    success: true,
-    message: "Booking deleted successfully",
-  });
 }
