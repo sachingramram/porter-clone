@@ -119,7 +119,7 @@ export default function UserDashboardPage() {
                 <p className="font-semibold text-gray-900">{data.name}</p>
               </div>
               <div className="text-right">
-                <p className="text-sm text-gray-500">Company</p>
+                <p className="text-sm text-gray-500">Business/ Personal</p>
                 <p className="font-semibold text-gray-900">{data.company}</p>
               </div>
             </div>

@@ -89,13 +89,13 @@ export default function BookVehicleEnterprisePage() {
 
               <div className="space-y-1">
                 <label className="text-sm font-semibold text-gray-700 ml-1">
-                  Company Name
+                  Business or Personal
                 </label>
                 <input
                   name="company"
                   value={form.company}
                   onChange={handleChange}
-                  placeholder="e.g. Acme Corp"
+                  placeholder="Personal/Business"
                   className="w-full border border-gray-300 bg-gray-50 rounded-xl p-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                   required
                 />
